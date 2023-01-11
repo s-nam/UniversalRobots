@@ -24,19 +24,19 @@ When you get an queue_size error, please refer to [this](http://wiki.ros.org/ros
 First of all, please turn on the power supply to give 24 VDC (Set the maximum voltage as 24V and the maximum current as 1.0 A, and volatge control mode), and check if you can see either blue or led light on the gripper.
 
 Open a terminal and run
-```console
+```consol
 $ roscore
 ```
 
 Open another terminal and run
-```console
+```consol
 $ rosrun robotiq_2f_gripper_control Robotiq2FGripperRtuNode.py /dev/ttyUSB0
 ```
 
 Open another terminal and run `rosrun robotiq_2f_gripper_control Robotiq2FGripperSimpleController.py`
 
 If you see the `queue_size` error message, such as below:
-```console
+```consol
 $ rosrun robotiq_2f_gripper_control Robotiq2FGripperSimpleController.py
 
 /home/softtas2022/catkin_ws/src/robotiq/robotiq_2f_gripper_control/nodes/Robotiq2FGripperSimpleController.py:135: SyntaxWarning: The publisher should be created with an explicit keyword argument 'queue_size'. Please see http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers for more information.
@@ -73,7 +73,7 @@ In this case, please open `Robotiq2FGripperSimpleController.py` in `~/catkin_ws/
 
 The gripper's listener provides the gripper's status.
 
-```console
+```consol
 $ rosrun robotiq_2f_gripper_control Robotiq2FGripperStatusListener.py
 ```
 
