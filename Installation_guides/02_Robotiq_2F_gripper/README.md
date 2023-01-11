@@ -4,7 +4,7 @@
 - OS: Ubuntu 20.04.5 LTS 64-bit
 - Robot: UR10 (CB series)
 - Polyscope version: 3.15.8
-- For CB series, you should connect the USB cord of the gripper to the remote PC, rather than to the control box.
+- For CB series, you should **connect the USB cord** of the gripper **to the remote PC**, rather than to the control box.
 
     > If you are using e-series, it seems possible to connect the USB to the control box and to control the gripper from a remote PC. Please refer to [this](https://answers.ros.org/question/399617/how-to-control-a-robotiq-2f-85-in-ros-via-the-ur-tool-io/) and [this](https://github.com/UniversalRobots/Universal_Robots_ToolComm_Forwarder_URCap).
 
@@ -33,9 +33,9 @@ Open another terminal and run
 $ rosrun robotiq_2f_gripper_control Robotiq2FGripperRtuNode.py /dev/ttyUSB0
 ```
 
-Open another terminal and run **rosrun robotiq_2f_gripper_control Robotiq2FGripperSimpleController.py**
+Open another terminal and run `rosrun robotiq_2f_gripper_control Robotiq2FGripperSimpleController.py`
 
-If you see the 'queue_size' error message, such as below:
+If you see the `queue_size` error message, such as below:
 ```console
 $ rosrun robotiq_2f_gripper_control Robotiq2FGripperSimpleController.py
 
@@ -58,7 +58,7 @@ i: Increase force
 d: Decrease force
 -->
 ```
-In this case, please open **Robotiq2FGripperSimpleController.py** in "~/catkin_ws/src/robotiq/robotiq_2f_gripper_control/nodes/" and add "queue_size=10", such as below
+In this case, please open `Robotiq2FGripperSimpleController.py` in `~/catkin_ws/src/robotiq/robotiq_2f_gripper_control/nodes/` and add `queue_size=10`, such as below
 
 ```Python
 ...
@@ -82,9 +82,15 @@ Whenever the grippers light blinks in blue and red colors, check the status usin
 I found **"gFLT = 14: Overcurrent protection triggered"** whenever I activated the gripper.
 I guess the current gets over the limit internally defined if
 
-- the gripper wants to reach the 0 gap even if our gripper hardly grips to 0.
-- the gripper want to reach the 255 gap even if our gripper hardly grips to 255.
+- the gripper wants to reach the 0 gap even if our gripper hardly grips to 0. (Overcurrent)
+- the gripper want to reach the 255 gap even if our gripper hardly grips to 255. (Overcurrent)
+- the gripper could not produce higher current when closing it. (Undercurrent)
 
+### 4.1. Overcurrent case
 My solution is to set the gripper work within 10 - 250. In addition, decrease the force and speed.
 
-## 5. Making my own Python code to control the gripper
+### 4.2. Undercurrent case
+Set the maximum current as **1.2 A** in the DC power supply (although the official manual indicates 1.0 A), and the maximum voltage as 24 V.
+
+## 5. Simple Python code to control the gripper
+Please see [this repository](https://github.com/s-nam/control_2f_gripper_and_ur10).
