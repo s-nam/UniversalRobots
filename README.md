@@ -20,6 +20,10 @@ Contents
 
     > It is quite difficult to find an official way to install/control a Robotiq 2F gripper on ROS Noetic. You can find the know-how that I did.
 
-5. Linking a Robotiq 2F gripper to UR10 for Moveit ([Go](./Installation_guides/02_Robotiq_2F_gripper/Create_URDF.md))
+5. Linking a Robotiq 2F gripper's URDF to UR10's URDF ([Go](./Installation_guides/02_Robotiq_2F_gripper/Create_URDF.md))
 
     > This tutorial will guide you on how to attach a Robotiq 2F gripper to the end effector of UR10 in the virtual simulation environment.
+
+6. Setting up Robotiq 2F gripper and UR10 for Moveit Noetic ([Go](./Installation_guides/02_Robotiq_2F_gripper/Moveit_setup.md))
+
+    > If you want to load the gripper and the robot arm (UR10) together in Moveit and control the both, please check this.
